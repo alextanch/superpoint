@@ -87,6 +87,8 @@ def generate_data(n, out_dir, draw_fn, background_size, image_size, blur_size):
 
     # здесь скорей всего нужно будет сгладить и отресайзить выходное изображение в image_size
     
+    file = out_dir / str(n).zfill(6)
+    
     cv2.imwrite(file.with_suffix(".png"), image) # сохраняем grayscale синтетическое изображение
     np.save(file.with_suffix(".npy"), points) # сохраняем ключевые точки, размер N x 2 (если точек нет то N = 0)
     
