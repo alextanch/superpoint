@@ -101,25 +101,25 @@ def main(cfg):
     # создать директорию cfg.data_dir
     # если она уже создана - удалить вместе с ее содержимым
 
+    # словарь, который мапит название функции на ее реализацию
+    draw_fn = {
+            # функция генерирующая синтетическое изображение с линиями и вычисляет точки пересечения линий
+            "draw_lines": draw_lines, 
+            # другие функции для генерации разных видов синтетических изображений и координат ключевых точек
+            "draw_polygon": draw_polygon,
+            "draw_multiple_polygons": draw_multiple_polygons,
+            "draw_ellipses": draw_ellipses,
+            "draw_star": draw_star,
+            "draw_checkerboard": draw_checkerboard,
+            "draw_stripes": draw_stripes,
+            "draw_cube": draw_cube,
+            "gaussian_noise": gaussian_noise,
+    }[name]
+
     # перебираем все примитивы из конфига
     for name, size in cfg.primitives.items():
-        # словарь, который мапит название функции на ее реализацию
-        draw_fn = dict(
-            # функция генерирующая синтетическое изображения с линиями и вычисляет точки пересечения линий
-            draw_lines=draw_lines, 
-            # другие функции для генерации разных видов синтетических изображений и координат ключевых точек
-            draw_polygon=draw_polygon,
-            draw_multiple_polygons=draw_multiple_polygons,
-            draw_ellipses=draw_ellipses,
-            draw_star=draw_star,
-            draw_checkerboard=draw_checkerboard,
-            draw_stripes=draw_stripes,
-            draw_cube=draw_cube,
-            gaussian_noise=gaussian_noise,
-        )[name]
-
         # создать директорию 
-        # out_dir = cdg.data_dir / name
+        out_dir = Path(cdg.data_dir) / name
 
         # генерируем size штук синтетических изображений типа name
         # в дальнейшем этот цикл надо распараллелить с помощью joblib 
