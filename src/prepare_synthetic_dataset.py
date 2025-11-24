@@ -119,7 +119,7 @@ def main(cfg):
     # перебираем все примитивы из конфига
     for name, size in cfg.primitives.items():
         # создать директорию 
-        out_dir = Path(cdg.data_dir) / name
+        out_dir = Path(cfg.data_dir) / name
 
         # генерируем size штук синтетических изображений типа name
         # в дальнейшем этот цикл надо распараллелить с помощью joblib 
