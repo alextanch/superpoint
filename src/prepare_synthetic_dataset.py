@@ -114,7 +114,7 @@ def main(cfg):
             "draw_stripes": draw_stripes,
             "draw_cube": draw_cube,
             "gaussian_noise": gaussian_noise,
-    }[name]
+    }
 
     # перебираем все примитивы из конфига
     for name, size in cfg.primitives.items():
@@ -125,7 +125,7 @@ def main(cfg):
         # в дальнейшем этот цикл надо распараллелить с помощью joblib 
         # для увеличения скорости генерации данных
         for n in range(size):
-            generate_data(n, out_dir, draw_fn, cfg.background_size, cfg.image_size, cfg.blur_size)
+            generate_data(n, out_dir, draw_fn[name], cfg.background_size, cfg.image_size, cfg.blur_size)
 
 
 if __name__ == "__main__":
