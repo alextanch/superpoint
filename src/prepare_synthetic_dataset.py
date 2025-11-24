@@ -103,17 +103,17 @@ def main(cfg):
 
     # словарь, который мапит название функции на ее реализацию
     draw_fn = {
-            # функция генерирующая синтетическое изображение с линиями и вычисляет точки пересечения линий
-            "draw_lines": draw_lines, 
-            # другие функции для генерации разных видов синтетических изображений и координат ключевых точек
-            "draw_polygon": draw_polygon,
-            "draw_multiple_polygons": draw_multiple_polygons,
-            "draw_ellipses": draw_ellipses,
-            "draw_star": draw_star,
-            "draw_checkerboard": draw_checkerboard,
-            "draw_stripes": draw_stripes,
-            "draw_cube": draw_cube,
-            "gaussian_noise": gaussian_noise,
+        # функция генерирующая синтетическое изображение с линиями и вычисляет точки пересечения линий
+        "draw_lines": draw_lines, 
+        # другие функции для генерации разных видов синтетических изображений и координат ключевых точек
+        "draw_polygon": draw_polygon,
+        "draw_multiple_polygons": draw_multiple_polygons,
+        "draw_ellipses": draw_ellipses,
+        "draw_star": draw_star,
+        "draw_checkerboard": draw_checkerboard,
+        "draw_stripes": draw_stripes,
+        "draw_cube": draw_cube,
+        "gaussian_noise": gaussian_noise,
     }
 
     # перебираем все примитивы из конфига
