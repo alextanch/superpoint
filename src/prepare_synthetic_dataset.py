@@ -85,7 +85,8 @@ def generate_data(n, out_dir, draw_fn, background_size, image_size, blur_size):
     # на фоне нарисовать примитивы
     image, points = draw_fn(image)
 
-    # здесь скорей всего нужно будет сгладить и отресайзить выходное изображение в image_size
+    # здесь скорей всего нужно будет сгладить 
+    # и отресайзить выходное изображение в image_size
     
     file = out_dir / str(n).zfill(6)
     
@@ -121,9 +122,11 @@ def main(cfg):
         # out_dir = cdg.data_dir / name
 
         # генерируем size штук синтетических изображений типа name
-        # в дальнейшем этот цикл надо распараллелить для увеличения скорости генерации данных
+        # в дальнейшем этот цикл надо распараллелить с помощью joblib 
+        # для увеличения скорости генерации данных
         for n in range(size):
             generate_data(n, out_dir, draw_fn, cfg.background_size, cfg.image_size, cfg.blur_size)
+
 
 if __name__ == "__main__":
     params = Path(__file__).stem
